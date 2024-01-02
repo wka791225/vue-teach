@@ -45,6 +45,11 @@ export default {
           break;
       }
     },
+    // 將子元件傳回來的值寫進主頁面data內
+    fanalMath(result){
+
+      this.result = result;
+    }
   },
 }
 </script>
@@ -83,12 +88,13 @@ export default {
     </div>
 
     <div class="btns">
+      <!-- 製作一個可以複用的，然後用:name把data的值帶入子元件內進行計算 -->
+      <CalcButton :calc-type="calcType" :number-one="numA" :number-two="numB" @final-math = "fanalMath"/>
       <!-- <button class="btn" type="button" @click="add()">
         +
       </button> -->
       <!-- 如何將資料傳進components -->
       <!-- 如何從components取得資料 -->
-      <CalcButton :calc-type="calcType" />
       <!-- <button class="btn" type="button" @click="calcNumber('+') ">
         +
       </button>
@@ -125,7 +131,7 @@ export default {
 <!-- scoped: 目的是為了不要影響到其他區塊的style -->
 <style lang="scss" scoped>
   .btns {
-    @apply flex gap-[30px];
+    @apply flex gap-[30px] ;
     .btn {
       @apply w-[50px] h-[50px] bg-slate-500 text-slate-50 rounded-lg text-xl;
     }
