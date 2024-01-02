@@ -46,10 +46,11 @@ export default {
       }
     },
     // 將子元件傳回來的值寫進主頁面data內
-    fanalMath(result){
+    fanalMath(money){
 
-      this.result = result;
-    }
+      this.result = money;
+    },
+    submit(){}
   },
 }
 </script>
@@ -90,31 +91,8 @@ export default {
     <div class="btns">
       <!-- 製作一個可以複用的，然後用:name把data的值帶入子元件內進行計算 -->
       <CalcButton :calc-type="calcType" :number-one="numA" :number-two="numB" @final-math = "fanalMath"/>
-      <!-- <button class="btn" type="button" @click="add()">
-        +
-      </button> -->
-      <!-- 如何將資料傳進components -->
-      <!-- 如何從components取得資料 -->
-      <!-- <button class="btn" type="button" @click="calcNumber('+') ">
-        +
-      </button>
-      <button class="btn" type="button" @click="calcNumber('-') ">
-        -
-      </button>
-      <button class="btn" type="button" @click="calcNumber('*') ">
-        *
-      </button>
-      <button class="btn" type="button" @click="calcNumber('/') ">
-        /
-      </button> -->
-      <!-- <MyButton @click="add()">
-        <template #placeA>+</template>
-        <template #placeB>我是另一個開孔</template>
-      </MyButton>
-      <MyButton @click="add()">
-        <template #placeA>-</template></MyButton>
-      <MyButton @click="add()">*</MyButton>
-      <MyButton @click="add()">/</MyButton> -->
+      <!-- 做出0~9的數字盤 他可以點擊之後會讓數字A加數字上去 -->
+      
     </div>
     <div class="output text-main-deep bg-blue-100">
       輸出結果: {{ result }}
