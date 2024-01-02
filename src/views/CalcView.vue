@@ -92,7 +92,10 @@ export default {
       <!-- 製作一個可以複用的，然後用:name把data的值帶入子元件內進行計算 -->
       <CalcButton :calc-type="calcType" :number-one="numA" :number-two="numB" @final-math = "fanalMath"/>
       <!-- 做出0~9的數字盤 他可以點擊之後會讓數字A加數字上去 -->
-      
+    </div>
+    <div>
+      <!-- 數字可以做成陣列並利用v-for顯示數字0-9 接下來再編寫@click的function去加入numA裡面-->
+      <button type="button" class=" rounded-full bg-sky-600 text-white w-[50px] h-[50px] flex items-center justify-center">1</button>
     </div>
     <div class="output text-main-deep bg-blue-100">
       輸出結果: {{ result }}
