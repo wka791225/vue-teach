@@ -19,7 +19,21 @@ data() {
   };
 },
 methods:{
-  
+  addList() {
+    if(!this.addText) return;
+    // 抓去array裡面的id最大數+1當作是下一個array的id 如果沒有的話則 id 給他1
+    const listId = this.toDoListArr.length ? Math.max(...this.toDoListArr.map(item => item.id)) + 1 : 1;
+    this.toDoListArr.push({
+      id: listId,
+      toDo: this.addText,
+      checkThis: false,
+
+    });
+    // this.addText = '';
+  },
+  checkYes(id) {
+    console.log(id);
+  }
 }
 };
 </script>
@@ -32,9 +46,9 @@ methods:{
         <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
         <button class="bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-3 rounded-xl m-3 text-white text-xl" type="button" @click="addList()"><font-awesome-icon :icon="['fas', 'file-import']" /></button>
       </div>
-      <div>
+      <div class="overflow-y-scroll h-[500px]">
         <div v-for=" item in toDoListArr" :key="item.id" class="flex items-center justify-between gap-5 border-b-2">
-          <input class="ml-3" type="checkbox" >
+          <input v-model="item.checkThis" class="ml-3" type="checkbox" @click="checkYes(item.id)">
           <span>{{ item.toDo }}</span>
           <button class="bg-gradient-to-b from-red-500  to-orange-500 p-3 rounded-xl m-3 text-white" type="button"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
         </div>
