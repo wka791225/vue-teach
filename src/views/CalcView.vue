@@ -21,6 +21,11 @@ export default {
       calcType: ['+', '-', '*', '/'],
     };
   },
+  // 今天我開啟了這個網頁後先處理的事情
+  mounted() {
+console.log(123);
+this.checkThis();
+  },
   // 放置所有function的位置
   methods: {
     calcNumber(type) {
@@ -50,7 +55,9 @@ export default {
 
       this.result = money;
     },
-    submit(){}
+    checkThis(){
+      console.log(456);
+    }
   },
 }
 </script>
@@ -70,7 +77,9 @@ export default {
   <!-- v-model => input與變數的連結 -->
 
   <!-- v-on 省略的寫法"@" 後面連接觸發的事件名稱 -->
-
+  <div @click="checkThis()">
+    點擊我
+  </div>
   <div class="calc flex flex-col gap-5">
     計算機
     <div v-html="html"></div>

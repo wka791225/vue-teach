@@ -17,6 +17,9 @@ export default {
       'main-deep': '#800080',
       ...colors,
     },
+    fontFamily: {
+      'big':['Rubik+Doodle+Shadow'],
+    },
   },
   plugins: [],
 }

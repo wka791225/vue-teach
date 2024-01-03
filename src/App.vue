@@ -15,9 +15,11 @@ export default {
     <a href="/">home</a>
     <a href="/about">about</a>
     <a href="/calc">calc</a>
+    <a href="/todolist">todolist</a>
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink> -->
+    
   </header>
   <main>
     <RouterView />
