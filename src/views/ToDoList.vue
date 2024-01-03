@@ -25,20 +25,23 @@ mounted() {
 },
 methods:{
   addList() {
-    if(!this.addText) return;
+    const { addText, toDoListArr } = this;
+    if(!addText) return;
     // session清空
     // sessionStorage.removeItem('toDoList');
     // 抓去array裡面的id最大數+1當作是下一個array的id 如果沒有的話則 id 給他1
-    const listId = this.toDoListArr.length ? Math.max(...this.toDoListArr.map(item => item.id)) + 1 : 1;
-    this.toDoListArr.push({
+    const listId = toDoListArr.length ? Math.max(...toDoListArr.map(item => item.id)) + 1 : 1;
+    toDoListArr.push({
       id: listId,
-      toDo: this.addText,
+      toDo: addText,
       checkThis: false,
 
     });
-    this.addText = '';
+    addText = '';
     // 將新的資料存入SESSION，將資料轉乘json格式儲存至SESSION內
-    sessionStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
+    sessionStorage.setItem('toDoList', JSON.stringify(toDoListArr));
+     // 將新的資料存入localStorage，將資料轉乘json格式儲存至localStorage內
+    localStorage.setItem('toDoList', JSON.stringify(toDoListArr));
   },
 }
 };
@@ -50,13 +53,15 @@ methods:{
     <div class="w-[70%] bg-white rounded-md">
       <div class="flex items-center justify-center border-b-2 gap-5">
         <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
+        事項最後時間<input type="date" name="" id="" >
+        事項紀錄時間<input type="date" name="" id="" >
         <button class="bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-3 rounded-xl m-3 text-white text-xl" type="button" @click="addList()"><font-awesome-icon :icon="['fas', 'file-import']" /></button>
       </div>
       <div class="overflow-y-scroll h-[500px]">
         <div v-for=" item in toDoListArr" :key="item.id" class="flex items-center justify-between gap-5 border-b-2" :class="{ 'bg-neutral-950 text-white line-through' : item.checkThis === true }">
           <input v-model="item.checkThis" class="ml-3" type="checkbox">
           <span>{{ item.toDo }}</span>
-          <button class="bg-gradient-to-b from-red-500  to-orange-500 p-3 rounded-xl m-3 text-white" type="button"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
+          <button class="bg-gradient-to-b from-red-500  to-orange-500 p-3 rounded-xl m-3 text-white" type="button" @click="deleteList(item.id)"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
         </div>
       </div>
     </div>
