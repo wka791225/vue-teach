@@ -19,16 +19,19 @@ data() {
 mounted() {
 
   // 將sessionStorage的資料放入toDoListArr內 因為有轉成JSON格式所以要再轉回來
-  if(sessionStorage.getItem('toDoList')){
+  if(localStorage.getItem('toDoList')){
     this.toDoListArr = JSON.parse(localStorage.getItem('toDoList'));
   }
  
 },
 methods:{
+  // 新增功能
   addList() {
+    // 拿去當下時間
     let date = new Date().toISOString().split('T');
     const { addText, toDoListArr, endTime } = this;
-    if(!addText) return;
+    // 檢測是否為空字串
+    if(!addText && !endTime) return;
     // session清空
     // sessionStorage.removeItem('toDoList');
     // 抓去array裡面的id最大數+1當作是下一個array的id 如果沒有的話則 id 給他1
@@ -41,12 +44,22 @@ methods:{
       endTime: endTime,
     });
     this.addText = '';
-    console.log(toDoListArr);
     // 將新的資料存入SESSION，將資料轉乘json格式儲存至SESSION內
     // sessionStorage.setItem('toDoList', JSON.stringify(toDoListArr));
      // 將新的資料存入localStorage，將資料轉乘json格式儲存至localStorage內
     localStorage.setItem('toDoList', JSON.stringify(toDoListArr));
   },
+  // 刪除功能
+  deleteList(id) {
+    const {toDoListArr} = this;
+    // 找尋跟id不一樣的留下來
+   const deletList =  toDoListArr.filter(item => item.id !== id);
+  //  如果要修改data的值 的話，還是要加上this.
+   this.toDoListArr = deletList;
+  //  再放進localStorage內就可以完成刪除
+   localStorage.setItem('toDoList', JSON.stringify(deletList));
+    console.log(deletList);
+  }
 }
 };
 </script>
@@ -76,7 +89,7 @@ methods:{
         <div v-for=" item in toDoListArr" :key="item.id" class="flex items-center justify-between gap-5 border-b-2" :class="{ 'bg-neutral-950 text-white line-through' : item.checkThis === true }">
           <div class="w-full grid grid-cols-5 items-center">
             <div>
-              <input v-model="item.checkThis" class="ml-3" type="checkbox">
+              <input v-model="item.checkThis" class="ml-3" type="checkbox" >
             </div>
             <span class="grid grid-cols-subgrid">{{ item.toDo }}</span>
             <span>{{ item.endTime ?? '' }}</span>
