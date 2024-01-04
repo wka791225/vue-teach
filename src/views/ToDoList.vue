@@ -66,7 +66,8 @@ methods:{
 
 <template>
   <!-- 在使用漸層色的時候，要注意色調有要連續性 -->
-  <div class="w-full h-[100vh] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center font-big">
+  <div class="w-full h-[100vh] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 flex  flex-col items-center justify-center font-big">
+    <div class="w-full m-3">進度條位置 1.要跟現在的事項數量一致 2.只要勾起來就計算為完成進度條就會填上進度</div>
     <div class="w-[70%] bg-white rounded-md">
       <div class="flex items-center justify-center border-b-2 gap-5">
         <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
@@ -79,6 +80,7 @@ methods:{
         <button class="bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-3 rounded-xl m-3 text-white text-xl" type="button" @click="addList()"><font-awesome-icon :icon="['fas', 'file-import']" /></button>
       </div>
       <div class="w-full grid grid-cols-5 gap-4">
+        
         <div>執行</div>
         <div class="grid grid-cols-subgrid ">事項</div>
         <div>最後時間</div>
@@ -89,6 +91,7 @@ methods:{
         <div v-for=" item in toDoListArr" :key="item.id" class="flex items-center justify-between gap-5 border-b-2" :class="{ 'bg-neutral-950 text-white line-through' : item.checkThis === true }">
           <div class="w-full grid grid-cols-5 items-center">
             <div>
+              <!-- 執行結束，勾選起來後 要把刪除按鈕拿掉 -->
               <input v-model="item.checkThis" class="ml-3" type="checkbox" >
             </div>
             <span class="grid grid-cols-subgrid">{{ item.toDo }}</span>
