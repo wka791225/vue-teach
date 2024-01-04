@@ -114,7 +114,7 @@ methods:{
   topEditst(item) {
     item.editIng = !item.editIng;
     item.toDo = item.newToDo;
-// item.newToDo = '';
+    item.newToDo = '';
   },
 
 }
@@ -152,7 +152,7 @@ methods:{
               <input v-model="item.checkThis" class="ml-3" type="checkbox" @change="">
             </div>
             <span v-if="!item.editIng" class="grid grid-cols-subgrid" @click="starEdit(item)">{{ item.toDo }}</span>
-            <input v-else v-model="item.newToDo"  @blur="topEditst(item)" @keyup.enter="topEditst(item)" type="text" placeholder="修改事項">
+            <input v-else v-model="item.newToDo"  @blur="topEditst(item)" @keyup.enter="$event.target.blur()" type="text" placeholder="修改事項">
             
             <span>{{ item.endTime ?? '' }}</span>
             <span>{{ item.logTime }}</span>
