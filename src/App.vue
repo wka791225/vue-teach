@@ -16,6 +16,7 @@ export default {
     <a href="/about">about</a>
     <a href="/calc">calc</a>
     <a href="/todolist">todolist</a>
+    <a href="/picupload">picupload</a>
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink> -->
