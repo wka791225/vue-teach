@@ -1,6 +1,6 @@
 <script>
 import { RouterView } from 'vue-router';
-import background from '@/assets/Image/weatherPic.gif';
+import background from '@/assets/Image/111.png';
 
 export default {
   // 元件宣告
@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<template>
+<template >
   <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
   <header>
     <a href="/">home</a>
@@ -29,7 +29,7 @@ export default {
     <RouterLink to="/calc">calc</RouterLink> -->
     
   </header>
-  <main :style="{backgroundImage: `url(${background})`, fontSize: '50px'}">
+  <main :style="{backgroundImage: `url(${background})`}">
     <RouterView />
 
   </main>
@@ -41,12 +41,14 @@ export default {
 <!-- scoped style只影響這支vue -->
 <style scoped>
 header {
+  width: 100%;
   line-height: 1.5;
   min-height: 50px;
   max-height: 100vh;
   border-radius: 5px;
   background-color: black;
   color: wheat;
+  margin-bottom: 10px;
 }
 
 .logo {
@@ -79,9 +81,11 @@ nav a:first-of-type {
   border: 0;
 }
 main{
+  width: 100%;
+  padding: 0px 20px;
   background-size: cover;
   background-repeat: no-repeat;
-  color: rgb(252, 251, 255);
+  color: white;
 }
 @media (min-width: 1024px) {
   header {

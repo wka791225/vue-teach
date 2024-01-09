@@ -1,5 +1,10 @@
 <script>
-export default{
+import weatherCard from '@/components/WeatherCard.vue';
+
+export default {
+  components: {
+    weatherCard,
+  },
   data(){
     return {
       weatherData: [],
@@ -11,7 +16,6 @@ export default{
       return res.json();
     })
     .then(result => {
-      console.log(result);
       this.weatherData = result.records.location
     });
   },
@@ -20,8 +24,11 @@ export default{
 </script>
 
 <template>
-  <div>
-    {{ weatherData }}
+  <div  class="pt-3 w-full flex flex-wrap gap-3 justify-center">
+    <!-- {{ weatherData }} -->
+    <weatherCard v-for="item in weatherData"  :key="item.id"  class="w-[20%] mb-5" :weather-place="item" />
+
+    
   </div>
 </template>
 
