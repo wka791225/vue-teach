@@ -1,11 +1,17 @@
 <script>
-import { RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
+import background from '@/assets/Image/weatherPic.gif';
 
 export default {
   // 元件宣告
   components: {
     RouterView
   },
+  data(){
+    return {
+      background,
+    }
+  }
 }
 </script>
 
@@ -17,14 +23,15 @@ export default {
     <a href="/calc">calc</a>
     <a href="/todolist">todolist</a>
     <a href="/picupload">picupload</a>
+    <a href="/weather">weather</a>
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink> -->
     
   </header>
-  <main>
+  <main :style="{backgroundImage: `url(${background})`, fontSize: '50px'}">
     <RouterView />
-    <!-- <div class="calc text-[80px]">我來自公版</div> -->
+
   </main>
   <footer>
   </footer>
@@ -35,7 +42,11 @@ export default {
 <style scoped>
 header {
   line-height: 1.5;
+  min-height: 50px;
   max-height: 100vh;
+  border-radius: 5px;
+  background-color: black;
+  color: wheat;
 }
 
 .logo {
@@ -67,7 +78,11 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
-
+main{
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgb(252, 251, 255);
+}
 @media (min-width: 1024px) {
   header {
     display: flex;
