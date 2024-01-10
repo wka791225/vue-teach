@@ -1,4 +1,5 @@
 <script>
+// 
 import cloud from '@/assets/Image/cloud.gif';
 import rain from '@/assets/Image/rain.gif';
 import sun from '@/assets/Image/sun.gif';
@@ -11,6 +12,7 @@ export default {
     }
   },
   methods: {
+    // 圖片分級
     weatherImage(item) {
       //轉數字
       const temperature = parseInt(item);
@@ -34,13 +36,13 @@ export default {
 </script>
 
 <template>
-  <!-- {{ weatherPlace }} -->
   <div>
     <div class="w-full">
       <img class="w-full h-[300px]" :src="weatherImage(weatherPlace.weatherElement[1].time[0].parameter.parameterName)" alt="">
     </div>
     <div class=" flex flex-col justify-center  gap-2">
       <span class="text-center">{{ weatherPlace.locationName }}</span>
+      <!-- 日期跟時間切分開來 -->
       <span>時間：{{ weatherPlace.weatherElement[0].time[0].startTime.split(' ')[0] }}<br>
         {{ weatherPlace.weatherElement[0].time[0].startTime.split(' ')[1] }}~{{
           weatherPlace.weatherElement[0].time[0].endTime.split(' ')[1] }}</span>
