@@ -85,8 +85,9 @@ main{
   padding: 0px 20px;
   background-size: cover;
   background-repeat: no-repeat;
-  color: white;
+
 }
+
 @media (min-width: 1024px) {
   header {
     display: flex;
