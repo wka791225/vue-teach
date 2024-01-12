@@ -9,6 +9,10 @@ export default {
   data(){
     return {
       weatherData: [],
+       // 新增 data 屬性
+      checkDataArray: [],
+      weatherText: '',
+      weatherCheck: false,
       // 地區
       place:[
         {
@@ -32,12 +36,6 @@ export default {
         place: '離島',
       },
       ],
-      from:[
-        {
-          weatherText: '123',
-            weatherCheck: false,
-        }
-      ],
       checkPlace: 'all',
       north:['新北市', '新竹縣', '新竹市', '臺北市', '基隆市', '桃園市', '宜蘭縣' ],
       west:[ '雲林縣', '臺中市', '南投縣', '彰化縣', '苗栗縣'],
@@ -57,6 +55,7 @@ export default {
   },
    /*與methods相近，但是它是可以預處理你的資料，並且她有暫存的功能，利用這個特點可以做所謂的分頁功能
       因為我們是拿整包API到這個頁面來，所以為了要做分頁部分，我們不用再去重新拿取資料。
+      她只能做讀取不，不能做編輯動作
       在computed裡面要寫function但是不能帶數值進入，並且每個function一定要有return。
     */
   computed:{
@@ -74,18 +73,16 @@ export default {
 
   },
   watch: {
-    from:{
-      handler(){
-        if(this.from.weatherText === '123') {
-          this.from.weatherCheck = true;
-        }else if(this.from.weatherText === ''){
-          this.from.weatherCheck = false;
+        watchText: {
+            handler() {
+                if (this.watchText.trim() === '') {
+                    this.checkDataArray = [] ;
+                }
+                const filteredData = this.checkData.filter(item => this.watchText.includes(item.locationName));
+                this.checkDataArray = filteredData.slice();
+            }
         }
-      },
-      deep:true,
-      immediate:true,
     },
-  }
 
 }
 </script>
@@ -98,9 +95,14 @@ export default {
     <input v-model="from[0].weatherText" type="text">
     <input v-model="from[0].weatherCheck" type="checkbox">{{ from[0].weatherCheck }}
   </div>
-  <div  class="pt-3 w-full flex flex-wrap gap-3 justify-center">
+  <div  v-if="checkDataArray.length === 0"  class="pt-3 w-full flex flex-wrap gap-3 justify-center">
 <!-- 利用v-for帶入weatherData內的植，並且使用父傳子的方式 將單一值傳進components -->
+<!-- 一開始進來的資料，未經過watch篩選 -->
     <weatherCard v-for="item in checkData"  :key="item.id"  class="w-[20%] mb-5" :weather-place="item" />
+  </div>
+  <!-- 顯示watch的資料 -->
+  <div v-else class="flex">
+  <weatherCard v-for="item in checkDataArray" :key="item.id" :weather-place="item"></weatherCard>
   </div>
 </template>
 
