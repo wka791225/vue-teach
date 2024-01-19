@@ -18,12 +18,12 @@ export default {
 <template >
   <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
   <header>
-    <a href="/">home</a>
-    <a href="/about">about</a>
-    <a href="/calc">calc</a>
-    <a href="/todolist">todolist</a>
-    <a href="/picupload">picupload</a>
-    <a href="/weather">weather</a>
+    <RouterLink to="/">home</RouterLink>
+    <RouterLink to="/about">about</RouterLink>
+    <RouterLink to="/calc">calc</RouterLink>
+    <RouterLink to="/todolist">todolist</RouterLink>
+    <RouterLink to="/picupload">picupload</RouterLink>
+    <RouterLink to="/weather">weather</RouterLink>
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink> -->
