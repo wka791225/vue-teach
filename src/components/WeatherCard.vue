@@ -36,22 +36,26 @@ export default {
 </script>
 
 <template>
-  <div>
-    <div class="w-full">
-      <img class="w-full h-[300px]" :src="weatherImage(weatherPlace.weatherElement[1].time[0].parameter.parameterName)" alt="">
+  <div >
+    <div class="w-full rounded-t-lg">
+      <img class="w-full h-[300px] rounded-t-lg" :src="weatherImage(weatherPlace.weatherElement[1].time[0].parameter.parameterName)" alt="">
     </div>
-    <div class=" flex flex-col justify-center  gap-2">
-      <span class="text-center">{{ weatherPlace.locationName }}</span>
-      <!-- 日期跟時間切分開來 -->
-      <span>時間：{{ weatherPlace.weatherElement[0].time[0].startTime.split(' ')[0] }}<br>
-        {{ weatherPlace.weatherElement[0].time[0].startTime.split(' ')[1] }}~{{
-          weatherPlace.weatherElement[0].time[0].endTime.split(' ')[1] }}</span>
-      <span>舒適度：{{ weatherPlace.weatherElement[3].time[0].parameter.parameterName }} </span>
-      <span>氣溫：{{ weatherPlace.weatherElement[2].time[0].parameter.parameterName }}~{{
-        weatherPlace.weatherElement[4].time[0].parameter.parameterName }} 度</span>
-      <span>天氣概況：{{ weatherPlace.weatherElement[0].time[0].parameter.parameterName }}</span>
-      <span>降雨機率：{{ weatherPlace.weatherElement[1].time[0].parameter.parameterName }}%</span>
+    <div class=" flex flex-col justify-center  gap-2 relative bg-white opacity-50 rounded-b-lg px-3 pb-2">
+        <span class="text-center">{{ weatherPlace.locationName }}</span>
+        <!-- 日期跟時間切分開來 -->
+        <span>時間：{{ weatherPlace.weatherElement[0].time[0].startTime.split(' ')[0] }}<br>
+          {{ weatherPlace.weatherElement[0].time[0].startTime.split(' ')[1] }}~{{
+            weatherPlace.weatherElement[0].time[0].endTime.split(' ')[1] }}</span>
+        <span>舒適度：{{ weatherPlace.weatherElement[3].time[0].parameter.parameterName }} </span>
+        <span>氣溫：{{ weatherPlace.weatherElement[2].time[0].parameter.parameterName }}~{{
+          weatherPlace.weatherElement[4].time[0].parameter.parameterName }} 度</span>
+        <span>天氣概況：{{ weatherPlace.weatherElement[0].time[0].parameter.parameterName }}</span>
+        <span>降雨機率：{{ weatherPlace.weatherElement[1].time[0].parameter.parameterName }}%</span>
+
     </div>
+    
   </div>
 </template>
-<style></style>
+<style>
+
+</style>
