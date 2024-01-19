@@ -22,7 +22,6 @@ export default {
     <RouterLink to="/about">about</RouterLink>
     <RouterLink to="/calc">calc</RouterLink>
     <RouterLink to="/todolist">todolist</RouterLink>
-    <RouterLink to="/picupload">picupload</RouterLink>
     <RouterLink to="/weather">weather</RouterLink>
     <!-- <RouterLink to="/">home</RouterLink>
     <RouterLink to="/about">about</RouterLink>
