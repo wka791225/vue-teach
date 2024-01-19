@@ -92,8 +92,8 @@ export default {
   <weather-slot v-for="item in place" :key="item.id" :class="{' bg-warmGray-400  text-warmGray-900' : checkPlace == item.id }"  @click="checkPlace = item.id">
       {{ item.place }}
     </weather-slot>
-    <input v-model="from[0].weatherText" type="text">
-    <input v-model="from[0].weatherCheck" type="checkbox">{{ from[0].weatherCheck }}
+    <input v-model="weatherText" type="text">
+    <input v-model="weatherCheck" type="checkbox">{{ weatherCheck }}
   </div>
   <div  v-if="checkDataArray.length === 0"  class="pt-3 w-full flex flex-wrap gap-3 justify-center">
 <!-- 利用v-for帶入weatherData內的植，並且使用父傳子的方式 將單一值傳進components -->
