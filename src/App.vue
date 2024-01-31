@@ -23,10 +23,6 @@ export default {
     <RouterLink to="/calc">calc</RouterLink>
     <RouterLink to="/todolist">todolist</RouterLink>
     <RouterLink to="/weather">weather</RouterLink>
-    <!-- <RouterLink to="/">home</RouterLink>
-    <RouterLink to="/about">about</RouterLink>
-    <RouterLink to="/calc">calc</RouterLink> -->
-    
   </header>
   <main :style="{backgroundImage: `url(${background})`}">
     <RouterView />
