@@ -1,10 +1,9 @@
 <script>
-import MyButton from '@/components/customButton/MyButton.vue';
 import CalcButton from '@/components/customButton/CalcButton.vue';
 
 export default {
   components: {
-    MyButton,
+
     CalcButton,
   },
   // 放置所有變數的位置

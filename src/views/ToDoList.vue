@@ -61,7 +61,7 @@ methods:{
     const { addText, toDoListArr } = this;
     // 檢測是否為空字串
     if(!addText) return  Swal.fire({
-      title: "請填寫代辦事項及事項最後時間",
+      title: "請填寫代辦事項",
       icon: "error"
     });
     // session清空
@@ -101,26 +101,46 @@ methods:{
    }
    // 編輯開關打開
    item.editIng = !item.editIng;
+   console.log(item.editIng);
+   if(item.editIng === false) {
+     item.toDo = item.newToDo;
+     item.newToDo = '';
+     localStorage.setItem('toDoList', JSON.stringify(this.toDoListArr));
+    }
     // 舊的事項放入newToDo
     item.newToDo = item.toDo;
   },
   // 刪除功能
-  deleteList(id) {
+  deleteList(item) {
     const {toDoListArr} = this;
-    // 找尋跟id不一樣的留下來
-  const deletList =  toDoListArr.filter(item => {
     if(item.checkThis){
     return  Swal.fire({
-      title: "已經完成的項目無法刪除",
+      title: "已經完成的項目無法編輯刪除",
       icon: "info"
     });
    }
-    item.id !== id
-  });
+   Swal.fire({
+  title: "是否刪除",
+  icon: "question",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  confirmButtonText: "是",
+  cancelButtonColor: "#d33",
+  cancelButtonText: "否",
+}).then((result) => {
+  if (result.isConfirmed) {
+    // 找尋跟id不一樣的留下來
+  const deleteList =  toDoListArr.filter(deleteData =>  deleteData.id !== item.id );
   //  如果要修改data的值 的話，還是要加上this.
-  this.toDoListArr = deletList;
+  this.toDoListArr = deleteList;
   //  再放進localStorage內就可以完成刪除
-  localStorage.setItem('toDoList', JSON.stringify(deletList));
+  localStorage.setItem('toDoList', JSON.stringify(deleteList));
+  Swal.fire({
+      title: "刪除成功",
+      icon: "success"
+    });
+  }
+})
   },
 
 
@@ -165,7 +185,7 @@ methods:{
             <input v-else v-model="item.newToDo" type="text" class="border-2 border-black rounded-md" placeholder="修改事項">
             <div class="flex justify-center gap-5">
               <button class="w-full bg-gradient-to-b from-green-500  to-blue-500 p-2 rounded-xl  text-white" type="button" @click="editList(item)"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></button>
-              <button class="w-full bg-gradient-to-b from-red-500  to-orange-500 p-2 rounded-xl  text-white" type="button" @click="deleteList(item.id)"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
+              <button class="w-full bg-gradient-to-b from-red-500  to-orange-500 p-2 rounded-xl  text-white" type="button" @click="deleteList(item)"><font-awesome-icon :icon="['fas', 'trash-can']" /></button>
             </div>
           </div>
         </div>
