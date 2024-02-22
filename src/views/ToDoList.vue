@@ -26,10 +26,10 @@ data() {
 },
 // 當網頁載入時會觸發
 mounted() {
-  // // 將sessionStorage的資料放入toDoListArr內 因為有轉成JSON格式所以要再轉回來
-  // if(localStorage.getItem('toDoList')){
-  //   this.toDoListArr = JSON.parse(localStorage.getItem('toDoList'));
-  // }
+  // 將sessionStorage的資料放入toDoListArr內 因為有轉成JSON格式所以要再轉回來
+  if(localStorage.getItem('toDoList')){
+    this.toDoListArr = JSON.parse(localStorage.getItem('toDoList'));
+  }
 },
 computed:{
   selectData(){
@@ -158,7 +158,7 @@ methods:{
     <div class="w-[70%] bg-white rounded-md">
       <div class="flex items-center flex-col justify-center border-b-2 mb-2">
         <div class="w-full flex items-center justify-center  gap-5">
-          <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2" placeholder="請填寫事項">
+          <input v-model="addText" type="text" class="w-full h-10 ml-3 border-2 rounded-md focus:rounded-md " placeholder="請填寫事項">
   
           <button class="bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-3 rounded-xl m-3 text-white text-xl" type="button" @click="addList()"><font-awesome-icon :icon="['fas', 'file-import']" /></button>
         </div>
