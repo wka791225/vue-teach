@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import HomeView from '../views/HomeView.vue'
+import ToDoList from '../views/ToDoList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +11,7 @@ const router = createRouter({
       // 自訂義頁面名稱
       name: 'home',
       // 自訂義要使用到的元件
-      component: HomeView
+      component: ToDoList
     },
     {
       path: '/about',

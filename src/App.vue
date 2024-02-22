@@ -18,13 +18,9 @@ export default {
 <template >
   <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
   <header>
-    <RouterLink to="/">home</RouterLink>
-    <RouterLink to="/about">about</RouterLink>
-    <RouterLink to="/calc">calc</RouterLink>
     <RouterLink to="/todolist">todolist</RouterLink>
-    <RouterLink to="/weather">weather</RouterLink>
   </header>
-  <main :style="{backgroundImage: `url(${background})`}">
+  <main class="w-full h-[calc(100vh-30px)] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 flex  flex-col items-center justify-center font-big">
     <RouterView />
 
   </main>
@@ -38,24 +34,21 @@ export default {
 header {
   width: 100%;
   line-height: 1.5;
-  min-height: 50px;
-  max-height: 100vh;
-  border-radius: 5px;
+  padding:  0 1rem;
   background-color: black;
   color: wheat;
-  margin-bottom: 10px;
+
 }
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+
 }
 
 nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
@@ -77,7 +70,6 @@ nav a:first-of-type {
 }
 main{
   width: 100%;
-  padding: 0px 20px;
   background-size: cover;
   background-repeat: no-repeat;
 

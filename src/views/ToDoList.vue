@@ -19,17 +19,17 @@ data() {
         editIng: false,
         // 編輯文字
         newToDo: '',
-      }
+      },
     ],
     selectBox: 'all',
   };
 },
 // 當網頁載入時會觸發
 mounted() {
-  // 將sessionStorage的資料放入toDoListArr內 因為有轉成JSON格式所以要再轉回來
-  if(localStorage.getItem('toDoList')){
-    this.toDoListArr = JSON.parse(localStorage.getItem('toDoList'));
-  }
+  // // 將sessionStorage的資料放入toDoListArr內 因為有轉成JSON格式所以要再轉回來
+  // if(localStorage.getItem('toDoList')){
+  //   this.toDoListArr = JSON.parse(localStorage.getItem('toDoList'));
+  // }
 },
 computed:{
   selectData(){
@@ -101,7 +101,6 @@ methods:{
    }
    // 編輯開關打開
    item.editIng = !item.editIng;
-   console.log(item.editIng);
    if(item.editIng === false) {
      item.toDo = item.newToDo;
      item.newToDo = '';
@@ -155,7 +154,7 @@ methods:{
 
 <template>
   <!-- 在使用漸層色的時候，要注意色調有要連續性 -->
-  <div class="w-full h-[100vh] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 flex  flex-col items-center justify-center font-big">
+  <div class="w-full flex justify-center">
     <div class="w-[70%] bg-white rounded-md">
       <div class="flex items-center flex-col justify-center border-b-2 mb-2">
         <div class="w-full flex items-center justify-center  gap-5">
@@ -174,7 +173,7 @@ methods:{
         <div class="grid grid-cols-subgrid ">事項</div>
         <div class="text-center">功能</div>
       </div>
-      <div class="overflow-y-scroll h-[500px] pl-5 testthis">
+      <div class=" overflow-x-auto h-[500px] px-5 testthis">
         <div v-for=" item in selectData" :key="item.id" class="flex items-center justify-between gap-5 border-b-2" :class="{ 'bg-neutral-950 text-white line-through' : item.checkThis === true }">
           <div class="w-full grid grid-cols-3 items-center py-3">
             <div>
