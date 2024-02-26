@@ -1,6 +1,7 @@
 <script>
 import { RouterView } from 'vue-router';
-import background from '@/assets/Image/111.png';
+import shoppingCar from '@/assets/Image/shopcar.svg';
+
 
 export default {
   // 元件宣告
@@ -9,19 +10,42 @@ export default {
   },
   data(){
     return {
-      background,
+      shoppingCar,
+      shoppingList: 0,
     }
+  },
+  // computed: {
+  //   shoppingCarLength() {
+  //     return JSON.parse(localStorage.getItem('cart'))?.length || 0;
+  //   }
+  // },
+  methods: {
+    updateCartLength() {
+      this.shoppingList = JSON.parse(localStorage.getItem('cart'))?.length || 0;
+    }
+  },
+  mounted() {
+    this.updateCartLength();
   }
-}
+  }
 </script>
 
 <template >
   <!-- 觀察你的設計稿 把共用的部分放在此頁面 -->
-  <header>
-    <RouterLink to="/todolist">todolist</RouterLink>
+  <header class="flex justify-between h-[40px]">
+    <div>
+      <RouterLink to="/todolist">todolist</RouterLink>
+      <RouterLink to="/shopping">shopping</RouterLink>
+    </div>
+    <div class="pr-5 relative">
+      <RouterLink to="/Shoppingcar">
+        <img class="w-[30px]" :src="shoppingCar" alt="" srcset="">
+      </RouterLink>
+      <div class="absolute top-[20px] z-10 right-[17px] w-[16px] h-[16px] flex justify-center items-center rounded-full bg-red-600">{{ shoppingList }}</div>
+    </div>
   </header>
-  <main class="w-full h-[calc(100vh-30px)] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 flex  flex-col items-center justify-center font-big">
-    <RouterView />
+  <main class="w-full h-[100vh] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 flex  flex-col items-center justify-center font-big">
+    <RouterView @cart-updated="updateCartLength"/>
 
   </main>
   <footer>
@@ -33,72 +57,13 @@ export default {
 <style scoped>
 header {
   width: 100%;
-  line-height: 1.5;
+  display: flex;
+  align-items: center;
   padding:  0 1rem;
   background-color: black;
   color: wheat;
-
+  position: fixed;
+  top: 0px;
 }
 
-.logo {
-  display: block;
-
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-main{
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>

@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require('tailwindcss/colors');
-
 export default {
   content: [
     "./index.html",
@@ -12,10 +10,6 @@ export default {
     screens: {
       'sm': '520px',
       'tablet': '920px',
-    },
-    colors: {
-      'main-deep': '#800080',
-      ...colors,
     },
     fontFamily: {
       'big':['Rubik+Doodle+Shadow'],

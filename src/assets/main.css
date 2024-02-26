@@ -18,9 +18,3 @@ a,
   padding: 3px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(96, 87%, 49%, 0.425);
-    color: white;
-  }
-}

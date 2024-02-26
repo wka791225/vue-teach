@@ -22,19 +22,24 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/calc',
-      name: 'calc',
-      component: () => import('../views/CalcView.vue')
+      path: '/shopping',
+      name: 'shopping',
+      component: () => import('../views/ShoppingCard/ShoppingList.vue')
     },
     {
-      path: '/todolist',
-      name: 'todolist',
-      component: () => import('../views/ToDoList.vue')
+      path: '/Shoppingcar',
+      name: 'Shoppingcar',
+      component: () => import('../views/ShoppingCard/ShoppingCar.vue')
     },
     {
-      path: '/weather',
-      name: 'weather',
-      component: () => import('../views/WeatherApi.vue')
+      path: '/Shoppingcheck',
+      name: 'ShoppingCheckout',
+      component: () => import('../views/ShoppingCard/ShoppingCheckout.vue')
+    },
+    {
+      path: '/buysuccess',
+      name: 'ShoppingBuySuccess',
+      component: () => import('../views/ShoppingCard/ShoppingBuySuccess.vue')
     },
     
   ]
