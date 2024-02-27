@@ -24,12 +24,21 @@ export default {
       },
     };
   },
-
+  mounted() {
+  this.userCheck();
+  },
   methods: {
     submitCart() {
       localStorage.setItem('user', JSON.stringify(this.formData));
+
+
       this.$router.push('/buysuccess');
     },
+    userCheck(){
+      if (localStorage.getItem('user')) {
+        this.formData = JSON.parse(localStorage.getItem('user'));
+      }
+    }
   },
 };
 </script>
@@ -194,7 +203,12 @@ export default {
         <h2 class="text-2xl font-bold w-full text-end">商品數量: {{ qty }}</h2>
         <h2 class="text-2xl font-bold w-full text-end">商品金額: ${{ total }}</h2>
       </div>
-      <div class="w-full flex justify-end">
+      <div class="w-full flex justify-between">
+        <div class="flex justify-center items-center bg-[#8c5046] text-white rounded-md  px-4 py-1 cursor-pointer md:p-0"  @click="$router.go(-1)">
+      <span>
+      回上頁繼續加購
+      </span>
+      </div>
         <button
           type="submit"
           class="flex justify-center items-center bg-[#50468c] text-white rounded-md px-4 py-1 cursor-pointer md:p-0"

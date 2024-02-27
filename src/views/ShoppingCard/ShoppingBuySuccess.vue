@@ -11,7 +11,6 @@ export default {
   },
   mounted() {
     // 刪除 localStorage 中的checkShopping資料
-    // localStorage.removeItem('checkShopping');
     // 利用localStorage中的checkShopping資料與cart的資料比對，如果有相同的資料就刪除
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let checkShopping = JSON.parse(localStorage.getItem('checkShopping')) || [];
@@ -19,6 +18,8 @@ export default {
       return !checkShopping.some((item2) => item.id === item2.id);
     });
     localStorage.setItem('cart', JSON.stringify(newCart));
+    localStorage.removeItem('checkShopping');
+    this.$emit('cart-updated');
   },
 };
 </script>

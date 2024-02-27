@@ -118,10 +118,18 @@ mounted() {
       <h2 class="text-2xl text-end font-bold w-full">商品數量: {{ qty }}</h2>
       <h2 class="text-2xl text-end font-bold w-full">商品總金額: ${{ total }}</h2>
     </div>
-    <div class="flex justify-center items-center bg-[#50468c] text-white rounded-md  px-4 py-1 cursor-pointer md:p-0" @click="submitCart()">
-    <span>
-    確認購買
-    </span>
-    </div>
+    
+    <div class="flex justify-between gap-4">
+      <div class="flex justify-center items-center bg-[#8c5046] text-white rounded-md  px-4 py-1 cursor-pointer md:p-0"  @click="$router.go(-1)">
+      <span>
+      回上頁繼續購買
+      </span>
+      </div>
+      <div class="flex justify-center items-center bg-[#50468c] text-white rounded-md  px-4 py-1 cursor-pointer md:p-0" @click="submitCart()">
+      <span>
+      確認購買
+      </span>
+      </div>
+      </div>
   </div>
 </template>
