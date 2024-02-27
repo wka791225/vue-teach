@@ -44,7 +44,7 @@ export default {
       <div class="absolute top-[20px] z-10 right-[17px] w-[16px] h-[16px] flex justify-center items-center rounded-full bg-red-600">{{ shoppingList }}</div>
     </div>
   </header>
-  <main class="w-full h-[100vh] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 flex  flex-col items-center justify-center font-big">
+  <main class="w-full  pt-[50px] font-big">
     <RouterView @cart-updated="updateCartLength"/>
 
   </main>
